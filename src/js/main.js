@@ -1,24 +1,61 @@
 import iframeMessenger from 'guardian/iframe-messenger'
 import reqwest from 'reqwest'
-import mainHTML from './text/main.html!text'
-import share from './lib/share'
+import doT from 'olado/doT'
+import treemap from './lib/treemap'
 
-var shareFn = share('Interactive title', 'http://gu.com/p/URL', '#Interactive');
+import mainHTML from './text/main.html!text'
+import spending from './data/spending.tsv!tsv'
+
+var templateFn = doT.template(mainHTML);
+
+var departmentCosts = {};
+var departmentName = '';
+spending.forEach(spend => {
+    if (spend.name) {
+        spend.cost = parseInt(spend.cost);
+
+        if (departmentName) {
+            if (spend.cost > 0) { // TODO: TEMP
+                departmentCosts[departmentName].divisions.push(spend);
+            }
+        } else {
+            departmentName = spend.name;
+            departmentCosts[departmentName] = {'cost': spend.cost, 'divisions': []};
+        }
+    } else {
+        departmentName = '';
+    }
+});
+
+const width = 100, height = 50;
+
+var departments = Object.keys(departmentCosts)
+    .filter(name => departmentCosts[name].cost > 0)
+    .map(name => {
+        var department = departmentCosts[name];
+        return {
+            name,
+            'cost': department.cost,
+            'treemap': treemap(department.divisions, division => division.cost, width, height)
+        };
+    })
+    .sort((a, b) => b.cost - a.cost);
+
+var governmentTreemap = treemap(departments, department => department.cost, width, height);
 
 export function init(el, context, config, mediator) {
     iframeMessenger.enableAutoResize();
 
-    el.innerHTML = mainHTML.replace(/%assetPath%/g, config.assetPath);
+    departments.forEach((department, i) => {
+        var box = governmentTreemap[i].box;
+        var area = box.width * box.height;
+        var width = Math.sqrt(area / 2);
+        console.log(area, box, width, area / width);
 
-    reqwest({
-        url: 'http://ip.jsontest.com/',
-        type: 'json',
-        crossOrigin: true,
-        success: (resp) => el.querySelector('.test-msg').innerHTML = `Your IP address is ${resp.ip}`
+        department.padding = 100 - area / width;
     });
 
-    [].slice.apply(el.querySelectorAll('.interactive-share')).forEach(shareEl => {
-        var network = shareEl.getAttribute('data-network');
-        shareEl.addEventListener('click',() => shareFn(network));
-    });
+    var sections = [{'name': 'Goverment overview', 'treemap': governmentTreemap}].concat(departments);
+
+    el.innerHTML = templateFn({sections});
 }

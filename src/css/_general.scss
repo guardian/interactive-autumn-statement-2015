@@ -2,7 +2,9 @@ body,
 figure.interactive {
     margin: 0;
     padding: 0;
-    background-color: #dcdcdc;
+    background-color: white;
+    color: #333;
+    @include fs-bodyCopy(2);
 }
 
 // Link styles don't exist on the app
@@ -19,43 +21,61 @@ a {
     }
 }
 
-.interactive-container {
-    margin: 0 auto;
+.section {
+    max-width: 880px;
+    margin-bottom: 48px;
+
+    @include mq(leftCol) {
+        padding-left: 160px;
+    }
+    @include mq(wide) {
+        padding-left: 240px;
+    }
+}
+
+.section__name {
+    @include fs-header(2);
+    margin: 0 0 12px 0;
+}
+
+.section__copy {
+    max-width: 620px;
+    margin: 0 0 8px 0;
+}
+
+.section__ratio {
+    position: relative;
+    padding-bottom: 50%;
+}
+
+.section__divisions {
+    @include fs-textSans(1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f1f1f1;
+}
+
+.section__division {
+    position: absolute;
     box-sizing: border-box;
-    background-color: white;
+    border: 1px solid #dcdcdc;
+    text-align: center;
+    overflow: hidden;
 
-    padding: 10px;
-    @include mq(mobileLandscape) {
-        padding: 20px;
+    &::before {
+        content: "";
+        height: 100%;
     }
 
-    @each $bp in (tablet, desktop, leftCol, wide) {
-        @include mq($bp) {
-            max-width: map-get($mq-breakpoints, $bp);
-        }
+    &::before,
+    & > span {
+        display: inline-block;
+        vertical-align: middle;
     }
 }
-
-.interactive-es6-headline {
-	@include fs-headline(5);
-}
-
-.test-msg {
-	color: #005689;
-	@include fs-textSans(3);
-}
-
-.fonts {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	margin-top: 24px;
-	li {
-		margin-bottom: 6px;
-	}
-}
-
-.fonts__egyptian { @include fs-headline(3); }
-.fonts__text-egyptian { @include fs-bodyCopy(2); }
-.fonts__sans { @include f-headlineSans; }
-.fonts__text-sans { @include fs-textSans(4); }

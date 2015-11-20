@@ -1,18 +1,21 @@
-<div class="interactive-container">
-    <h2 class="interactive-es6-headline">Interactive bootstrap</h2>
-
-    <div class="test-msg">Loading…</div>
-
-    <ul class="fonts">
-        <li class="fonts__egyptian">Egyptian</li>
-        <li class="fonts__text-egyptian">Text Egyptian</li>
-        <li class="fonts__sans">Sans</li>
-        <li class="fonts__text-sans">Text Sans</li>
-    </ul>
-    <p>
-        <button class="interactive-share" data-network="facebook"></button>
-        <button class="interactive-share" data-network="twitter"></button>
-        <button class="interactive-share" data-network="email"></button>
-    </p>
-    <img src="%assetPath%/assets/imgs/test.png" />
-</div>
+{{~it.sections :section}}
+    <section class="section">
+        <h2 class="section__name">{{=section.name}}</h2>
+        <p class="section__copy">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ligula mi, pretium vel iaculis sit amet, gravida in leo.
+        </p>
+        <div style="padding-right: {{=section.padding}}%">
+            <div class="section__ratio">
+                <ul class="section__divisions">
+                    {{~section.treemap :division}}
+                        <li class="section__division"
+                            style="left:{{=division.box.x}}%; top:{{=division.box.y * 2}}%;
+                                   width:{{=division.box.width}}%; height:{{=division.box.height * 2}}%">
+                            <span>{{=division.obj.name}}</span>
+                        </li>
+                    {{~}}
+                </ul>
+            </div>
+        </div>
+    </section>
+{{~}}
