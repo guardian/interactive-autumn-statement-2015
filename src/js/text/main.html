@@ -5,16 +5,19 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ligula mi, pretium vel iaculis sit amet, gravida in leo.
         </p>
         <div style="padding-right: {{=section.padding}}%">
-            <div class="section__ratio">
+            <div class="section__container js-section">
                 <ul class="section__divisions">
                     {{~section.treemap :division}}
                         <li class="section__division"
-                            style="left:{{=division.box.x}}%; top:{{=division.box.y * 2}}%;
-                                   width:{{=division.box.width}}%; height:{{=division.box.height * 2}}%">
+                            style="left: {{=division.box.x}}%; top: {{=division.box.y * 2}}%;
+                                   width: {{=division.box.width}}%; height: {{=division.box.height * 2}}%">
                             <span>{{=division.obj.name}}</span>
                         </li>
                     {{~}}
                 </ul>
+                <div class="section__cut js-cut" style="width: {{=section.cut}}%">
+                    <div class="section__container"></div>
+                </div>
             </div>
         </div>
     </section>

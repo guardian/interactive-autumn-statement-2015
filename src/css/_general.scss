@@ -7,6 +7,10 @@ figure.interactive {
     @include fs-bodyCopy(2);
 }
 
+::selection {
+    background: rgba(75, 198, 223, 0.4);
+}
+
 // Link styles don't exist on the app
 a {
     &,
@@ -43,7 +47,7 @@ a {
     margin: 0 0 8px 0;
 }
 
-.section__ratio {
+.section__container {
     position: relative;
     padding-bottom: 50%;
 }
@@ -58,15 +62,20 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #f1f1f1;
+    background-color: #dcdcdc;
 }
 
 .section__division {
     position: absolute;
+    background-clip: content-box;
     box-sizing: border-box;
-    border: 1px solid #dcdcdc;
+    border: 1px solid transparent;
     text-align: center;
     overflow: hidden;
+    background-color: #f1f1f1;
+
+    transition: margin 0.2s ease-out;
+    margin: 0;
 
     &::before {
         content: "";
@@ -78,4 +87,14 @@ a {
         display: inline-block;
         vertical-align: middle;
     }
+}
+
+.section__cut {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #dcdcdc;
+    cursor: move;
+    pointer-events: none;
 }
