@@ -5,7 +5,7 @@
             {{~section.copy: para}}<p class="section__copy">{{=para}}</p>{{~}}
         </div>
     {{??section.type === 'treemap'}}
-        <div class="section section--treemap-{{=section.size}} is-hiding-cuts js-treemap" data-map="{{=section.map}}">
+        <div class="section section--treemap section--treemap-{{=section.size}} is-hiding-cuts js-treemap" data-map="{{=section.map}}">
             <div class="section__treemap-info">
                 <p class="section__total">Total expenditure: £{{=section.total.toFixed(1)}}bn</p>
                 <button class="section__toggle js-toggle">Toggle cuts</button>
