@@ -29,19 +29,17 @@ a {
     margin-bottom: 48px;
 }
 
+.section--treemap-small,
 .section--copy {
     max-width: 880px;
 }
 
 .section--treemap-inline {
     max-width: 620px;
-
-    .section__toggle {
-        display: none;
-    }
 }
 
 .section--copy,
+.section--treemap-small,
 .section--treemap-inline {
     @include mq(leftCol) {
         padding-left: 160px;
@@ -73,7 +71,7 @@ a {
     padding: 0;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 2px;
     right: 0;
     bottom: 0;
 }
@@ -82,9 +80,12 @@ a {
     position: absolute;
     box-sizing: border-box;
     border: 1px solid white;
+    border-radius: 5px;
     text-align: center;
     overflow: hidden;
     padding: 4px;
+    background-color: #f1f1f1;
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 2px, white 2px, white 6px);
 
     &::before {
         content: "";
@@ -103,11 +104,30 @@ a {
         z-index: 2;
         color: white;
     }
+
+    &.section__division--welfare {
+        background-color: transparent;
+        overflow: visible;
+
+        & > span {
+            @include fs-textSans(3);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            color: black;
+            margin-top: 5px;
+            br {
+                display: none;
+            }
+        }
+    }
 }
 
 .section__cut {
     position: absolute;
     background-color: #bdbdbd;
+    border-radius: 5px;
 
     transition: all 0.2s ease-out;
     .is-hiding-cuts & {
@@ -116,19 +136,18 @@ a {
         right: 0 !important;
         bottom: 0 !important;
     }
+
+    .section__division--welfare & {
+        background-color: transparent !important;
+        border-radius: 11px;
+        border: 3px solid #333;
+        margin: -3px;
+        z-index: 5;
+    }
 }
 
-.section__toggle {
-    @include fs-textSans(2);
-    font-weight: bold;
-    outline: 0;
-    border: 0;
+.section__treemap-info {
     margin: 0 0 8px 0;
-    padding: 0 10px;
-    line-height: 30px;
-    background: #005689;
-    color: white;
-    border-radius: 100px;
 
     @include mq(leftCol) {
         margin-left: 160px;
@@ -136,4 +155,26 @@ a {
     @include mq(wide) {
         margin-left: 240px;
     }
+
+    .section--treemap-small & {
+        margin-left: 0;
+    }
+}
+
+.section__toggle {
+    @include fs-textSans(2);
+    font-weight: bold;
+    outline: 0;
+    border: 0;
+    padding: 0 10px;
+    line-height: 30px;
+    background: #005689;
+    color: white;
+    border-radius: 100px;
+}
+
+.section__total {
+    @include fs-textSans(3);
+    font-weight: bold;
+    float: right;
 }

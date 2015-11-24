@@ -15,7 +15,7 @@ import welfareData from './data/welfare.tsv!tsv'
 
 const tmeColors = [['5f1400', 'bdbdbd'], ['00427a', '00605d']];
 const rdelColors = ['00427a', '005688', '4982b8', '81b0de', 'b2e1f8', '0094ad', '4bc5de', '9bd9e7', 'c4e7ef', '3b4a5c', '657689', '92a3b7', 'c5d6eb', '7ea6c0', '4a788e', '79a6bd', 'a9d7ef'];
-const ameColors = ['5f1400', '8f4000', 'c66c00', 'ff9b0a', 'ffcc4b', 'ffed4e', 'ffff82', 'ffffb6', 'ffffe3'];
+const ameColors = ['5f1400', '8f4000', 'c66c00', 'ff9b0a', 'ffcc4b'];
 const cdelColors = ['00605d', '258e8a', '5bb8b3', '91f2ec'];
 
 const RATIO = 2, WIDTH = 100, HEIGHT = WIDTH / RATIO;
@@ -33,7 +33,7 @@ function getBox(area, ratioWH) {
 
 function treemap2(data, colors) {
     var map = treemap(data, d => parseFloat(d.cost), WIDTH, HEIGHT);
-    map.forEach((m, i) => m.obj.color = colors[i]);
+    map.forEach((m, i) => m.obj.color = colors[i % colors.length]);
     return map;
 };
 
@@ -66,7 +66,11 @@ var ameTreemap = treemap2(ameData, ameColors);
 var welfareDivision = ameTreemap[0]; // TODO: more robust search for welfare division?
 var welfareTreemap = treemap(welfareData, d => parseFloat(d.cost), welfareDivision.box.width, welfareDivision.box.height);
 
-console.log(welfareTreemap);
+welfareDivision.obj.special = 'welfare'
+
+welfareTreemap.forEach((d, i) => {
+    d.obj.color = ameColors[i];
+});
 
 var treemaps = {
     'tme': tmeTreemap,
@@ -111,6 +115,13 @@ export function init(el, context, config, mediator) {
             sections.forEach(section => {
                 if (section.copy) {
                     section.copy = section.copy.replace(/[\r\n]+/, '\n').split('\n');
+                }
+                if (section.map) {
+                    section.treemap = treemaps[section.map];
+                    section.total = section.treemap.reduce((total, d) => total + parseFloat(d.obj.cost), 0);
+                    if (section.map === 'ame') {
+                        section.total -= parseFloat(welfareDivision.obj.cost);
+                    }
                 }
             });
 

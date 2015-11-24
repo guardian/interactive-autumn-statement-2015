@@ -6,14 +6,17 @@
         </div>
     {{??section.type === 'treemap'}}
         <div class="section section--treemap-{{=section.size}} is-hiding-cuts js-treemap" data-map="{{=section.map}}">
-            <button class="section__toggle js-toggle">Toggle cuts</button>
+            <div class="section__treemap-info">
+                <p class="section__total">Total expenditure: £{{=section.total.toFixed(1)}}bn</p>
+                <button class="section__toggle js-toggle">Toggle cuts</button>
+            </div>
             <div class="section__container">
                 <ul class="section__divisions">
-                    {{~it.treemaps[section.map] :division}}
-                        <li class="section__division"
+                    {{~section.treemap :division}}
+                        <li class="section__division section__division--{{=division.obj.special}}"
                             style="left: {{=division.box.x}}%; top: {{=division.box.y * it.RATIO}}%;
                                    width: {{=division.box.width}}%; height: {{=division.box.height * it.RATIO}}%">
-                           <span>{{=division.obj.name}}<br />(£{{=division.obj.cost}}bn)</span>
+                           <span>{{=division.obj.name}}<br /> £{{=division.obj.cost}}bn</span>
                            <div class="section__cut js-cut" style="background-color: #{{=division.obj.color}}"></div>
                         </li>
                     {{~}}
