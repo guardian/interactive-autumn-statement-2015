@@ -9,6 +9,7 @@ import treemap from './lib/treemap'
 import mainHTML from './text/main.html!text'
 import tmeData from './data/tme.tsv!tsv'
 import rdelData from './data/rdel.tsv!tsv'
+import ameData from './data/ame.tsv!tsv' // TODO
 import cdelData from './data/cdel.tsv!tsv'
 
 const RATIO = 2, WIDTH = 100, HEIGHT = WIDTH / RATIO;
@@ -28,7 +29,7 @@ var tm = (data, colors) => {
 var treemaps = {
     'tme': tm(tmeData, ['00427a', '5f1400', '00605d']),
     'rdel': tm(rdelData, ['00427a', '005688', '4982b8', '81b0de', 'b2e1f8', '0094ad', '4bc5de', '9bd9e7', 'c4e7ef', '3b4a5c', '657689', '92a3b7', 'c5d6eb', '7ea6c0', '4a788e', '79a6bd', 'a9d7ef']),
-/* TODO */    'ame': tm(rdelData, ['5f1400', '8f4000', 'c66c00', 'ff9b0a', 'ffcc4b', 'ffed4e', 'ffff82', 'ffffb6', 'ffffe3']),
+    'ame': tm(ameData, ['5f1400', '8f4000', 'c66c00', 'ff9b0a', 'ffcc4b', 'ffed4e', 'ffff82', 'ffffb6', 'ffffe3']),
     'cdel': tm(cdelData, ['00605d', '258e8a', '5bb8b3', '91f2ec'])
 };
 
