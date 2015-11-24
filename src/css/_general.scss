@@ -77,19 +77,21 @@ a {
 }
 
 .section__division {
+    $padding: 4px;
     position: absolute;
     box-sizing: border-box;
     border: 1px solid white;
     border-radius: 5px;
     text-align: center;
     overflow: hidden;
-    padding: 4px;
+    padding: $padding;
     background-color: #f1f1f1;
     background-image: repeating-linear-gradient(-45deg, transparent, transparent 2px, white 2px, white 6px);
 
     &::before {
         content: "";
-        height: 100%;
+        margin-top: -($padding / 2);
+        height: calc(100% + #{$padding * 2});
         margin-left: -4px;
     }
 
@@ -178,4 +180,5 @@ a {
     @include fs-textSans(3);
     font-weight: bold;
     float: right;
+    margin: 16px 2px 0 0;
 }
