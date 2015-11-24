@@ -84,7 +84,7 @@ a {
     border: 1px solid white;
     text-align: center;
     overflow: hidden;
-    padding: 3px;
+    padding: 4px;
 
     &::before {
         content: "";
@@ -107,10 +107,9 @@ a {
 
 .section__cut {
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: #bdbdbd;
 
     transition: all 0.2s ease-out;
-
     .is-hiding-cuts & {
         top: 0 !important;
         left: 0 !important;

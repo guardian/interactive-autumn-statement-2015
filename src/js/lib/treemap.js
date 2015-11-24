@@ -49,9 +49,10 @@ function squarify(areas, row, rect) {
     }
 }
 
-export default function treemap(data, fn, width, height) {
+export default function treemap(data, fn, width, height, force, nosort=false) {
     var totalArea = width * height;
-    var sorted = data.slice().sort((a, b) => fn(b) - fn(a));
+    var sorted = data.slice()
+    if (!nosort) sorted.sort((a, b) => fn(b) - fn(a));
 
     var numbers = sorted.map(fn);
     var total = sum(numbers);
