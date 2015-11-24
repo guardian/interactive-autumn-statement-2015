@@ -1,24 +1,24 @@
 {{~it.sections :section}}
-    <section class="section">
-        <h2 class="section__name">{{=section.name}}</h2>
-        <p class="section__copy">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ligula mi, pretium vel iaculis sit amet, gravida in leo.
-        </p>
-        <div style="padding-right: {{=section.padding}}%">
-            <div class="section__container js-section">
+    {{?section.type === 'copy'}}
+        <div class="section section--copy">
+            {{?section.title}}<h2 class="section__title">{{=section.title}}</h2>{{?}}
+            {{~section.copy: para}}<p class="section__copy">{{=para}}</p>{{~}}
+        </div>
+    {{??section.type === 'treemap'}}
+        <div class="section section--treemap-{{=section.size}} is-hiding-cuts js-treemap" data-map="{{=section.map}}">
+            <button class="section__toggle js-toggle">Toggle cuts</button>
+            <div class="section__container">
                 <ul class="section__divisions">
-                    {{~section.treemap :division}}
+                    {{~it.treemaps[section.map] :division}}
                         <li class="section__division"
-                            style="left: {{=division.box.x}}%; top: {{=division.box.y * 2}}%;
-                                   width: {{=division.box.width}}%; height: {{=division.box.height * 2}}%">
-                            <span>{{=division.obj.name}}</span>
+                            style="left: {{=division.box.x}}%; top: {{=division.box.y * it.RATIO}}%;
+                                   width: {{=division.box.width}}%; height: {{=division.box.height * it.RATIO}}%">
+                           <span>{{=division.obj.name}}<br />(£{{=division.obj.cost}}bn)</span>
+                           <div class="section__cut js-cut" style="background-color: #{{=division.obj.color}}"></div>
                         </li>
                     {{~}}
                 </ul>
-                <div class="section__cut js-cut" style="width: {{=section.cut}}%">
-                    <div class="section__container"></div>
-                </div>
             </div>
         </div>
-    </section>
+    {{?}}
 {{~}}
