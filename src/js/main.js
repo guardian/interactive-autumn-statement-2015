@@ -22,7 +22,7 @@ const ameColors = ['590000', '892500', 'c05303', 'f98239', 'ffb367', 'ffe697', '
 const cdelColors = ['003800', '1c6326', '4d9150', '7dc27d', 'aef5ad', '475400', '778000', 'a9af2b', 'dde15e', '475400', '00605d', '258e8a', '7aa73a', 'acd969', '5ebfba', '92f2ec', 'c6ffff', '437700', '76a600', 'aad801', 'dfff50', '4a7801'];
 
 const RATIO = 2, WIDTH = 100, HEIGHT = WIDTH / RATIO;
-const SHEET_URL = sheetURL('1UkgqAS1NJPoiLlCZHn4p7nR0fXe8rW9XDQddk-_jUig', true); // TODO: disable test
+const SHEET_URL = sheetURL('1UkgqAS1NJPoiLlCZHn4p7nR0fXe8rW9XDQddk-_jUig', false); // TODO: disable test
 
 var $ = (el, s) => el.querySelector(s);
 var $$ = (el, s) => [].slice.apply(el.querySelectorAll(s));

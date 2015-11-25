@@ -29,7 +29,7 @@ a {
     margin-bottom: 24px;
 
     &[data-map='ame'] {
-        margin-bottom: 36px;
+        margin-bottom: 48px;
     }
 }
 
@@ -286,6 +286,14 @@ a {
     text-align: right;
     color: #999;
     margin: 4px 0 8px 2px;
+
+    @include mq(desktop) {
+        float: right;
+    }
+
+    .section--treemap-inline & {
+        float: none;
+    }
 }
 
 .section__compare {
