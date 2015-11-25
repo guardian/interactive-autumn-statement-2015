@@ -140,8 +140,8 @@ function init(el, context, config, mediator) {
                         section.new_total -= parseFloat(welfareDivision.obj.new_cost);
                     }
 
-                    section.total =  section.total / gdp2015 * 100;
-                    section.new_total = section.new_total / gdp2019 * 100;
+                    section.total_gdp =  section.total / gdp2015 * 100;
+                    section.new_total_gdp = section.new_total / gdp2019 * 100;
                 }
             });
 
