@@ -211,19 +211,33 @@ a {
     transition: background-color 0.1s ease-out;
     transition: color 0.1s ease-out;
 
+    &:hover {
+        background: #bdbdbd;
+    }
+
     .is-hiding-cuts & {
         color: white;
         background:  #005689;
+
+        &:hover {
+            background: #00456e;
+        }
     }
 }
 
 .section__toggle--new {
     background: #005689;
     color: white;
+    &:hover {
+        background: #00456e;
+    }
 
     .is-hiding-cuts & {
         background: #dcdcdc;
         color: #333;
+        &:hover {
+            background: #bdbdbd;
+        }
     }
 }
 
@@ -255,11 +269,7 @@ a {
     margin: 4px 0 8px 2px;
 }
 
-.section__showing {
-    @include fs-textSans(2);
-    line-height: 30px;
-    padding-left: 10px;
-
+.section__compare {
     .section--treemap-inline & {
         display: none;
     }
