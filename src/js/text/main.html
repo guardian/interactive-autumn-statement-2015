@@ -22,20 +22,37 @@
                         <li class="section__division section__division--{{=division.obj.special}} d-{{=section.map}}-{{=i}}"
                             style="left: {{=division.box.x}}%; top: {{=division.box.y * it.RATIO}}%;
                                    width: {{=division.box.width}}%; height: {{=division.box.height * it.RATIO}}%">
-                            <div class="section__text">
-                                <span>
-                                   {{=division.obj.name}}<br />
-                                   <span class="section__cost">£{{=division.obj.cost}}bn</span>
-                                   <span class="section__new-cost">£{{=division.obj.new_cost}}bn</span>
-                                </span>
-                            </div>
+                            {{?i < section.treemap.length - section.extra}}
+                                <div class="section__text">
+                                    <span>
+                                       {{=division.obj.name}}<br />
+                                       <span class="section__cost">£{{=division.obj.cost}}bn</span>
+                                       <span class="section__new-cost">£{{=division.obj.new_cost}}bn</span>
+                                    </span>
+                                </div>
+                            {{?}}
                             <div class="section__cut js-cut" style="background-color: #{{=division.obj.color}};"
                                  title="{{=division.obj.name}}"></div>
                         </li>
                     {{~}}
                 </ul>
             </div>
-            <p class="section__source">Source: Treasury, OBR</p>
+            {{?section.extra > 0}}
+                <p class="section__extra">
+                    <b>Minor funding:</b>
+                    {{~section.treemap.slice(-section.extra) : division:i}}
+                        <span class="section__e">
+                            <span class="section__key" style="background-color: #{{=division.obj.color}}"></span>
+                            {{=division.obj.name}}
+                            <span class="section__cost">£{{=division.obj.cost}}bn{{?i === section.extra - 1}}.{{?}}</span>
+                            <span class="section__new-cost">£{{=division.obj.new_cost}}bn{{?i === section.extra - 1}}.{{?}}</span>
+                        </span>
+                    {{~}}
+                    Source: Treasury, OBR
+                </p>
+            {{??}}
+                <p class="section__source">Source: Treasury, OBR</p>
+            {{?}}
         </div>
     {{?}}
 {{~}}

@@ -27,10 +27,6 @@ a {
 
 .section {
     margin-bottom: 24px;
-
-    &[data-map='ame'] {
-        margin-bottom: 48px;
-    }
 }
 
 .section--treemap {
@@ -72,6 +68,12 @@ a {
     padding-bottom: 180%;
     @include mq(tablet) {
         padding-bottom: 50%;
+    }
+
+    @include mq(tablet) {
+        .section[data-map='ame'] & {
+            margin-bottom: 32px;
+        }
     }
 }
 
@@ -311,4 +313,27 @@ a {
     & .section__cut {
         z-index: 7;
     }
+}
+
+.section__compare {
+    display: block;
+    @include mq(mobileLandscape) {
+        display: inline;
+    }
+}
+
+.section__extra {
+    @include fs-textSans(2);
+    color: #999;
+}
+
+.section__key {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+}
+
+.section__e {
+    padding-right: 5px;
 }

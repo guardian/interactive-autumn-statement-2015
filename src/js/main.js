@@ -22,7 +22,7 @@ const ameColors = ['590000', '892500', 'c05303', 'f98239', 'ffb367', 'ffe697', '
 const cdelColors = ['003800', '1c6326', '4d9150', '7dc27d', 'aef5ad', '475400', '778000', 'a9af2b', 'dde15e', '475400', '00605d', '258e8a', '7aa73a', 'acd969', '5ebfba', '7ed1cc', 'c6ffff', '437700', '76a600', 'aad801', 'dfff50', '4a7801'];
 
 const RATIO = window.innerWidth < 685 ? 0.5 : 1.8, WIDTH = 100, HEIGHT = WIDTH / RATIO;
-const SHEET_URL = sheetURL('1UkgqAS1NJPoiLlCZHn4p7nR0fXe8rW9XDQddk-_jUig', false);
+const SHEET_URL = sheetURL('1UkgqAS1NJPoiLlCZHn4p7nR0fXe8rW9XDQddk-_jUig', true);
 
 var $ = (el, s) => el.querySelector(s);
 var $$ = (el, s) => [].slice.apply(el.querySelectorAll(s));
@@ -86,7 +86,7 @@ welfareTreemap.forEach((d, i) => {
 var treemaps = {
     'tme': tmeTreemap,
     'rdel': treemap2(rdelData, rdelColors),
-    'ame': ameTreemap.concat(welfareTreemap),
+    'ame': welfareTreemap.concat(ameTreemap),
     'cdel': treemap2(cdelData, cdelColors)
 };
 
@@ -149,6 +149,7 @@ function init(el, context, config, mediator) {
                     section.total_gdp =  section.total / gdp2015 * 100;
                     section.new_total_gdp = section.new_total / gdp2019 * 100;
                 }
+                section.extra = parseInt(section.extra) || 0;
             });
 
             app(el, sections)
