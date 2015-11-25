@@ -186,3 +186,16 @@ a {
     float: right;
     margin: 16px 2px 0 0;
 }
+
+.section__cost {
+    display: none;
+}
+
+.is-hiding-cuts {
+    .section__cost {
+        display: inline;
+    }
+    .section__new-cost {
+        display: none;
+    }
+}

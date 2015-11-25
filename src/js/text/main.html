@@ -16,7 +16,11 @@
                         <li class="section__division section__division--{{=division.obj.special}}"
                             style="left: {{=division.box.x}}%; top: {{=division.box.y * it.RATIO}}%;
                                    width: {{=division.box.width}}%; height: {{=division.box.height * it.RATIO}}%">
-                           <span>{{=division.obj.name}}<br /> £{{=division.obj.cost}}bn</span>
+                           <span>
+                               {{=division.obj.name}}<br />
+                               <span class="section__cost">£{{=division.obj.cost}}bn</span>
+                               <span class="section__new-cost">£{{=division.obj.new_cost}}bn</span>
+                            </span>
                            <div class="section__cut js-cut" style="background-color: #{{=division.obj.color}}"></div>
                         </li>
                     {{~}}
