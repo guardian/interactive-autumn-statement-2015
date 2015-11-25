@@ -13,8 +13,8 @@ import ameData from './data/ame.tsv!tsv'
 import cdelData from './data/cdel.tsv!tsv'
 import welfareData from './data/welfare.tsv!tsv'
 
-const gdp2015 = 1874.494949495;
-const gdp2020 = 2326.446280992;
+const gdp2015 = 1873;
+const gdp2020 = 2326;
 
 const tmeColors = [['005689', '00605D'], ['c05303', 'f98239']];
 const rdelColors = ['00427a', '005688', '4982b8', '81b0de', 'b2e1f8', '0094ad', '4bc5de', '9bd9e7', 'c4e7ef', '3b4a5c', '657689', '92a3b7', 'c5d6eb', '7ea6c0', '4a788e', '79a6bd', 'a9d7ef'];

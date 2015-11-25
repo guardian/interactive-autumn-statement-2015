@@ -27,10 +27,18 @@ a {
 
 .section {
     margin-bottom: 24px;
+
+    &[data-map='ame'] {
+        margin-bottom: 36px;
+    }
 }
 
 .section--treemap {
     margin-top: -12px;
+
+    &[data-map='tme'] {
+        margin-top: -36px;
+    }
 }
 
 .section--treemap-small,
@@ -125,7 +133,6 @@ a {
     }
 
     .section__division--welfare & {
-        @include fs-textSans(3);
         overflow: visible;
         top: 100%;
         margin-top: 5px;
@@ -134,6 +141,10 @@ a {
         }
         br {
             display: none;
+        }
+
+        @include mq(mobileLandscape) {
+            @include fs-textSans(3, $size-only: true);
         }
     }
 }
@@ -169,6 +180,7 @@ a {
     @include fs-textSans(2);
     line-height: 30px;
     font-weight: bold;
+    white-space: nowrap;
 
     margin: 0 0 4px 0;
 
@@ -189,6 +201,10 @@ a {
         display: block;
         clear: both;
     }
+
+    @include mq(mobileLandscape) {
+        font-size: 14px;
+    }
 }
 
 .section__toggle {
@@ -198,7 +214,7 @@ a {
     outline: 0;
     border: 0;
     padding: 0 10px;
-    margin: 0 0 0 5px;
+    margin: 0 0 0 3px;
     line-height: 30px;
     background: #dcdcdc;
     color: #333;
@@ -242,11 +258,14 @@ a {
 }
 
 .section__total {
-    @include fs-textSans(3);
-    font-weight: bold;
     float: right;
-    margin: 16px 2px 0 0;
+    margin: 0 2px 0 0;
     white-space: nowrap;
+
+    display: none;
+    @include mq(tablet) {
+        display: block;
+    }
 }
 
 .section__cost {
