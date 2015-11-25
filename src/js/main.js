@@ -129,8 +129,10 @@ function init(el, context, config, mediator) {
                 if (section.map) {
                     section.treemap = treemaps[section.map];
                     section.total = section.treemap.reduce((total, d) => total + parseFloat(d.obj.cost), 0);
+                    section.new_total = section.treemap.reduce((total, d) => total + parseFloat(d.obj.new_cost), 0);
                     if (section.map === 'ame') {
                         section.total -= parseFloat(welfareDivision.obj.cost);
+                        section.new_total -= parseFloat(welfareDivision.obj.new_cost);
                     }
                 }
             });
