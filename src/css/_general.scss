@@ -166,6 +166,10 @@ a {
 }
 
 .section__treemap-info {
+    @include fs-textSans(2);
+    line-height: 30px;
+    font-weight: bold;
+
     margin: 0 0 4px 0;
 
     @include mq(leftCol) {
@@ -194,13 +198,32 @@ a {
     outline: 0;
     border: 0;
     padding: 0 10px;
+    margin: 0 0 0 5px;
     line-height: 30px;
-    background: #005689;
-    color: white;
+    background: #dcdcdc;
+    color: #333;
     border-radius: 100px;
 
     .section--treemap-inline & {
         display: none;
+    }
+
+    transition: background-color 0.1s ease-out;
+    transition: color 0.1s ease-out;
+
+    .is-hiding-cuts & {
+        color: white;
+        background:  #005689;
+    }
+}
+
+.section__toggle--new {
+    background: #005689;
+    color: white;
+
+    .is-hiding-cuts & {
+        background: #dcdcdc;
+        color: #333;
     }
 }
 
@@ -230,4 +253,14 @@ a {
     text-align: right;
     color: #999;
     margin: 4px 0 8px 2px;
+}
+
+.section__showing {
+    @include fs-textSans(2);
+    line-height: 30px;
+    padding-left: 10px;
+
+    .section--treemap-inline & {
+        display: none;
+    }
 }

@@ -110,6 +110,9 @@ function app(el, sections) {
         $(treemapEl, '.js-toggle').addEventListener('click', () => {
             treemapEl.classList.toggle('is-hiding-cuts');
         });
+        $(treemapEl, '.js-toggle2').addEventListener('click', () => {
+            treemapEl.classList.toggle('is-hiding-cuts');
+        });
     });
 }
 
