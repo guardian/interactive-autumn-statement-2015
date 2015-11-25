@@ -18,11 +18,11 @@
             </div>
             <div class="section__container">
                 <ul class="section__divisions">
-                    {{~section.treemap :division}}
+                    {{~section.treemap :division:i}}
                         <li class="section__division section__division--{{=division.obj.special}}"
                             style="left: {{=division.box.x}}%; top: {{=division.box.y * it.RATIO}}%;
                                    width: {{=division.box.width}}%; height: {{=division.box.height * it.RATIO}}%">
-                            <div class="section__text">
+                            <div class="section__text text-{{=section.map}}-{{=i}}">
                                 <span>
                                    {{=division.obj.name}}<br />
                                    <span class="section__cost">£{{=division.obj.cost}}bn</span>
@@ -35,7 +35,7 @@
                     {{~}}
                 </ul>
             </div>
-            <p class="section__source">Data from Autumn Statement 2015</p>
+            <p class="section__source">Source: Treasury, OBR</p>
         </div>
     {{?}}
 {{~}}
