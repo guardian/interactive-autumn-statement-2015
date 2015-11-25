@@ -35,12 +35,6 @@ a {
 
 .section--treemap {
     margin-top: -12px;
-
-    &[data-map='tme'] {
-        @include mq(tablet) {
-            margin-top: -36px;
-        }
-    }
 }
 
 .section--treemap-small,
@@ -96,7 +90,7 @@ a {
     border: 1px solid white;
     border-radius: 5px;
     text-align: center;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAJ37tz5zwjjgzgqKiqMYAEYB8RmROaABAAE9A+Y/FAxkgAAAABJRU5ErkJggg==) repeat;
+    background: white url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAJ37tz5zwjjgzgqKiqMYAEYB8RmROaABAAE9A+Y/FAxkgAAAABJRU5ErkJggg==) repeat;
 
     &.section__division--welfare {
         background: transparent;
@@ -129,7 +123,7 @@ a {
 
     & > span {
         position: relative;
-        z-index: 6;
+        z-index: 10;
         color: white;
     }
 
@@ -221,10 +215,6 @@ a {
     color: #333;
     border-radius: 100px;
 
-    .section--treemap-inline & {
-        display: none;
-    }
-
     transition: background-color 0.1s ease-out;
     transition: color 0.1s ease-out;
 
@@ -297,8 +287,6 @@ a {
     }
 }
 
-.section__compare {
-    .section--treemap-inline & {
-        display: none;
-    }
+.d-cdel-1 .section__cut {
+    z-index: 7;
 }

@@ -9,8 +9,8 @@
             <div class="section__treemap-info">
                 <p class="section__total">
                     Total expenditure:
-                    <span class="section__cost">£{{=section.total.toFixed(1)}}bn</span>
-                    <span class="section__new-cost">£{{=section.new_total.toFixed(1)}}bn</span>
+                    <span class="section__cost">{{=section.total.toFixed(1)}}% of GDP</span>
+                    <span class="section__new-cost">{{=section.new_total.toFixed(1)}}% of GDP</span>
                 </p>
                 <span class="section__compare">Compare:</span>
                 <button class="section__toggle js-toggle">Baseline 2015-16</button>
@@ -19,10 +19,10 @@
             <div class="section__container">
                 <ul class="section__divisions">
                     {{~section.treemap :division:i}}
-                        <li class="section__division section__division--{{=division.obj.special}}"
+                        <li class="section__division section__division--{{=division.obj.special}} d-{{=section.map}}-{{=i}}"
                             style="left: {{=division.box.x}}%; top: {{=division.box.y * it.RATIO}}%;
                                    width: {{=division.box.width}}%; height: {{=division.box.height * it.RATIO}}%">
-                            <div class="section__text text-{{=section.map}}-{{=i}}">
+                            <div class="section__text">
                                 <span>
                                    {{=division.obj.name}}<br />
                                    <span class="section__cost">£{{=division.obj.cost}}bn</span>

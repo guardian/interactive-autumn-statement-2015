@@ -13,8 +13,8 @@ import ameData from './data/ame.tsv!tsv'
 import cdelData from './data/cdel.tsv!tsv'
 import welfareData from './data/welfare.tsv!tsv'
 
-const gdp2015 = 1873;
-const gdp2020 = 2326;
+const gdp2015 = 1903;
+const gdp2019 = 2251;
 
 const tmeColors = [['005689', '00605D'], ['c05303', 'f98239']];
 const rdelColors = ['00427a', '005688', '4982b8', '81b0de', 'b2e1f8', '0094ad', '4bc5de', '9bd9e7', 'c4e7ef', '3b4a5c', '657689', '92a3b7', 'c5d6eb', '7ea6c0', '4a788e', '79a6bd', 'a9d7ef'];
@@ -57,12 +57,12 @@ var tmeTreemap = treemap(tmeData, d => (d.resource + d.capital) / gdp2015, WIDTH
         {
             'box': box,
             'obj': {'name': obj.name + ' running costs', 'cost': obj.resource, 'color': obj.colors[0],
-                'new_cost': obj.new_resource}
+                'new_cost': obj.resource_new}
         },
         {
             'box': {'x': box.x + box.width - width, 'y': box.y + box.height - height, width, height},
             'obj': {'name': obj.name + ' capital spending', 'cost': obj.capital, 'color': obj.colors[1],
-                'new_cost': obj.new_capital}
+                'new_cost': obj.capital_new}
         }
     ];
 }).reduce((a, b) => a.concat(b));
@@ -95,9 +95,11 @@ function app(el, sections) {
             var tmp = treemap[divisionNo];
             var box = tmp.box, obj = tmp.obj;
             obj.cost = parseFloat(obj.cost);
-            obj.new_cost = obj.cost;//obj.new_cost = parseFloat(obj.new_cost);
+            obj.new_cost = parseFloat(obj.new_cost);
 
-            var cut = (obj.new_cost / gdp2020) / (obj.cost / gdp2015);
+            console.log(obj.name, obj.cost, obj.new_cost);
+
+            var cut = (obj.new_cost / gdp2019) / (obj.cost / gdp2015);
             var tmp = getBox(box.width * box.height * cut, box.width / box.height);
             var width = tmp[0], height = tmp[1];
             var lr = (box.width - width) / 2 * WIDTH / box.width;
@@ -137,6 +139,9 @@ function init(el, context, config, mediator) {
                         section.total -= parseFloat(welfareDivision.obj.cost);
                         section.new_total -= parseFloat(welfareDivision.obj.new_cost);
                     }
+
+                    section.total =  section.total / gdp2015 * 100;
+                    section.new_total = section.new_total / gdp2019 * 100;
                 }
             });
 
