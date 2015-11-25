@@ -26,11 +26,11 @@ a {
 }
 
 .section {
-    margin-bottom: 48px;
+    margin-bottom: 24px;
 }
 
 .section--treemap {
-    margin-top: -36px;
+    margin-top: -12px;
 }
 
 .section--treemap-small,
@@ -165,7 +165,7 @@ $padding: 4px;
 }
 
 .section__treemap-info {
-    margin: 0 0 8px 0;
+    margin: 0 0 4px 0;
 
     @include mq(leftCol) {
         margin-left: 160px;
@@ -208,6 +208,7 @@ $padding: 4px;
     font-weight: bold;
     float: right;
     margin: 16px 2px 0 0;
+    white-space: nowrap;
 }
 
 .section__cost {

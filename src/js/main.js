@@ -13,6 +13,8 @@ import ameData from './data/ame.tsv!tsv'
 import cdelData from './data/cdel.tsv!tsv'
 import welfareData from './data/welfare.tsv!tsv'
 
+const gdp2015 = 1874.494949495;
+const gdp2020 = 2326.446280992;
 
 const tmeColors = [['005689', '00605D'], ['c05303', 'f98239']];
 const rdelColors = ['00427a', '005688', '4982b8', '81b0de', 'b2e1f8', '0094ad', '4bc5de', '9bd9e7', 'c4e7ef', '3b4a5c', '657689', '92a3b7', 'c5d6eb', '7ea6c0', '4a788e', '79a6bd', 'a9d7ef'];
@@ -33,7 +35,7 @@ function getBox(area, ratioWH) {
 }
 
 function treemap2(data, colors) {
-    var map = treemap(data, d => parseFloat(d.cost), WIDTH, HEIGHT);
+    var map = treemap(data, d => parseFloat(d.cost) / gdp2015, WIDTH, HEIGHT);
     map.forEach((m, i) => m.obj.color = colors[i % colors.length]);
     return map;
 };
@@ -45,7 +47,7 @@ tmeData.forEach((d, i) => {
     d.colors = tmeColors[i];
 });
 
-var tmeTreemap = treemap(tmeData, d => d.resource + d.capital, WIDTH, HEIGHT, true).map(d => {
+var tmeTreemap = treemap(tmeData, d => (d.resource + d.capital) / gdp2015, WIDTH, HEIGHT, true).map(d => {
     var box = d.box, obj = d.obj;
     var area = box.width * box.height * (obj.capital / (obj.resource + obj.capital));
     var tmp = getBox(area, 1);
@@ -54,12 +56,12 @@ var tmeTreemap = treemap(tmeData, d => d.resource + d.capital, WIDTH, HEIGHT, tr
     return [
         {
             'box': box,
-            'obj': {'name': 'Resource ' + obj.name, 'cost': obj.resource, 'color': obj.colors[0],
+            'obj': {'name': obj.name + ' running costs', 'cost': obj.resource, 'color': obj.colors[0],
                 'new_cost': obj.new_resource}
         },
         {
             'box': {'x': box.x + box.width - width, 'y': box.y + box.height - height, width, height},
-            'obj': {'name': 'Capital ' + obj.name, 'cost': obj.capital, 'color': obj.colors[1],
+            'obj': {'name': obj.name + ' capital spending', 'cost': obj.capital, 'color': obj.colors[1],
                 'new_cost': obj.new_capital}
         }
     ];
@@ -68,7 +70,7 @@ var tmeTreemap = treemap(tmeData, d => d.resource + d.capital, WIDTH, HEIGHT, tr
 // Add sub-treemap to AME welfare spending
 var ameTreemap = treemap2(ameData, ameColors.slice(6));
 var welfareDivision = ameTreemap[0]; // TODO: more robust search for welfare division?
-var welfareTreemap = treemap(welfareData, d => parseFloat(d.cost), welfareDivision.box.width, welfareDivision.box.height);
+var welfareTreemap = treemap(welfareData, d => parseFloat(d.cost) / gdp2015, welfareDivision.box.width, welfareDivision.box.height);
 
 welfareDivision.obj.special = 'welfare'
 
@@ -93,9 +95,9 @@ function app(el, sections) {
             var tmp = treemap[divisionNo];
             var box = tmp.box, obj = tmp.obj;
             obj.cost = parseFloat(obj.cost);
-            obj.new_cost = parseFloat(obj.new_cost);
+            obj.new_cost = obj.cost;//obj.new_cost = parseFloat(obj.new_cost);
 
-            var cut = obj.new_cost / obj.cost;
+            var cut = (obj.new_cost / gdp2020) / (obj.cost / gdp2015);
             var tmp = getBox(box.width * box.height * cut, box.width / box.height);
             var width = tmp[0], height = tmp[1];
             var lr = (box.width - width) / 2 * WIDTH / box.width;
