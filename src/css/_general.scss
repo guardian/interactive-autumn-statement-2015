@@ -302,30 +302,3 @@ a {
         display: none;
     }
 }
-
-// Hide overflowing stuff
-.text-rdel-14,
-.text-rdel-21,
-.text-ame-9,
-.text-ame-10,
-.text-cdel-13,
-.text-cdel-14 {
-    display: none;
-}
-
-.text-rdel-14 {
-    display: none;
-    @include mq(desktop) {
-        display: block;
-    }
-}
-
-.text-ame-4,
-.text-ame-5,
-.text-ame-6,
-.text-ame-18 {
-    display: none;
-    @include mq(tablet) {
-        display: block;
-    }
-}
