@@ -53,6 +53,11 @@ var tmeTreemap = treemap(tmeData, d => (d.resource + d.capital) / gdp2015, WIDTH
     var tmp = getBox(area, 1);
     var width = tmp[0], height = tmp[1];
 
+    var name = obj.name + ' capital spending';
+    if (obj.name === 'Departmental') {
+        name = 'Dept. capital spending';
+    }
+
     return [
         {
             'box': box,
@@ -61,7 +66,7 @@ var tmeTreemap = treemap(tmeData, d => (d.resource + d.capital) / gdp2015, WIDTH
         },
         {
             'box': {'x': box.x + box.width - width, 'y': box.y + box.height - height, width, height},
-            'obj': {'name': obj.name + ' capital spending', 'cost': obj.capital, 'color': obj.colors[1],
+            'obj': {'name': name, 'cost': obj.capital, 'color': obj.colors[1],
                 'new_cost': obj.capital_new}
         }
     ];
