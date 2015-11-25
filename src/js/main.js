@@ -21,7 +21,7 @@ const rdelColors = ['00427a', '005688', '4982b8', '81b0de', 'b2e1f8', '0094ad', 
 const ameColors = ['590000', '892500', 'c05303', 'f98239', 'ffb367', 'ffe697', '8f4000', 'c66c00', 'ff9b0b', 'ffcc4b', '781100', 'ad4300', 'e6711b', 'ffa14d', 'ffd37c', '915e00', 'c78b00', 'ffbb00', 'ffed4d', 'c89d0f'];
 const cdelColors = ['003800', '1c6326', '4d9150', '7dc27d', 'aef5ad', '475400', '778000', 'a9af2b', 'dde15e', '475400', '00605d', '258e8a', '7aa73a', 'acd969', '5ebfba', '7ed1cc', 'c6ffff', '437700', '76a600', 'aad801', 'dfff50', '4a7801'];
 
-const RATIO = 2, WIDTH = 100, HEIGHT = WIDTH / RATIO;
+const RATIO = window.innerWidth < 685 ? 0.5 : 1.8, WIDTH = 100, HEIGHT = WIDTH / RATIO;
 const SHEET_URL = sheetURL('1UkgqAS1NJPoiLlCZHn4p7nR0fXe8rW9XDQddk-_jUig', false);
 
 var $ = (el, s) => el.querySelector(s);
@@ -96,8 +96,6 @@ function app(el, sections) {
             var box = tmp.box, obj = tmp.obj;
             obj.cost = parseFloat(obj.cost);
             obj.new_cost = parseFloat(obj.new_cost);
-
-            console.log(obj.name, obj.cost, obj.new_cost);
 
             var cut = (obj.new_cost / gdp2019) / (obj.cost / gdp2015);
             var tmp = getBox(box.width * box.height * cut, box.width / box.height);

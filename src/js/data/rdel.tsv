@@ -1,25 +1,25 @@
 name	cost	new_cost
 Defence	27.2	30
-Single Intelligence Account	1.8	2.2
-Home Office	10.3	10.6
-Foreign and Commonwealth Office	1	1
-International Development	8.5	11
+SIA	1.8	2.2
+Home	10.3	10.6
+FCO	1	1
+DfID	8.5	11
 Health (inc. NHS)	111.6	124.1
-Work and Pensions	5.8	5.4
+DWP	5.8	5.4
 Education	53.6	57.1
-Business, Innovation and Skills	12.9	11.5
+BIS	12.9	11.5
 Transport	2.6	1.8
-Energy and Climate Change	0.9	0.9
-Culture, Media and Sport	1.1	1.1
-DCLG Communities	1.5	1.2
+DECC	0.9	0.9
+DCMS	1.1	1.1
+DCLG	1.5	1.2
 Scotland	25.9	26.5
 Wales	12.9	13.3
-Northern Ireland	9.7	9.9
-Justice)	6.2	5.6
-Law Officers’ Departments	0.5	0.5
-Environment, Food and Rural Affairs	1.5	1.4
-HM Revenue and Customs	3.3	2.9
-HM Treasury	0.2	0.1
+NI	9.7	9.9
+Justice	6.2	5.6
+Law Officers’ Depts	0.5	0.5
+DEFRA	1.5	1.4
+HMRC	3.3	2.9
+Treasury	0.2	0.1
 Cabinet Office	0.2	0.2
 National Citizen Service	0.1	0.4
-Small and Independent Bodies	1.5	1.5
+Others	1.5	1.5

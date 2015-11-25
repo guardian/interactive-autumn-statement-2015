@@ -69,17 +69,26 @@ a {
 
 .section__container {
     position: relative;
-    padding-bottom: 50%;
+    padding-bottom: 180%;
+    @include mq(tablet) {
+        padding-bottom: 50%;
+    }
 }
 
 .section__divisions {
-    @include fs-textSans(1);
+    @include f-textSans;
+    font-size: 11px;
+    line-height: 14px;
+
+    @include mq(tablet) {
+        @include fs-textSans(1, $size-only: true);
+    }
     list-style: none;
     margin: 0;
     padding: 0;
     position: absolute;
     top: 0;
-    left: 2px;
+    left: 0;
     right: 0;
     bottom: 0;
 }
@@ -98,20 +107,21 @@ a {
 }
 
 .section__text {
-    $padding: 2px;
-
     position: absolute;
     overflow: hidden;
-    left: 0;
-    right: 0;
+    left: -5px;
+    right: -5px;
     bottom: 0;
     top: 0;
-    padding: $padding;
+    text-shadow:
+       -1px -1px 0 transparentize(#333, 0.5),  
+        1px -1px 0 transparentize(#333, 0.5),
+        -1px 1px 0 transparentize(#333, 0.5),
+         1px 1px 0 transparentize(#333, 0.5);
 
     &::before {
         content: "";
-        margin-top: -($padding / 2);
-        height: calc(100% + #{$padding * 2});
+        height: 100%;
         margin-left: -4px;
     }
 
@@ -128,6 +138,7 @@ a {
     }
 
     .section__division--welfare & {
+        text-shadow: none;
         overflow: visible;
         top: 100%;
         margin-top: 5px;
@@ -140,6 +151,11 @@ a {
 
         @include mq(mobileLandscape) {
             @include fs-textSans(3, $size-only: true);
+        }
+
+        display: none;
+        @include mq(tablet) {
+            display: block;
         }
     }
 }
@@ -204,7 +220,7 @@ a {
 .section__toggle {
     @include fs-textSans(2);
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 500;
     outline: 0;
     border: 0;
     padding: 0 10px;

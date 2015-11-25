@@ -1,18 +1,18 @@
 name	cost	new_cost
 Inside welfare cap	120.9	115.3
 Outside welfare cap	96.3	108.8
-Company and other tax credits	2.4	2.8
-Net public service pension payments	11.4	15.7
-National lottery current grants	1.4	1.5
-BBC current expenditure	3.8	3.6
-Network Rail other current expenditure	0.8	0
-Other PSCE items in departmental AME	1.2	0.9
-Expenditure transfers to EU institutions	11.7	11.4
-Locally financed current expenditure	39.8	48
-Central government gross debt interest	46.5	57.3
-Public corporations debt interest	3.2	4
-General government depreciation	29.6	36
-Current VAT refunds	11.9	12.4
-Single use military expenditure	0.2	0.3
+Company tax credits	2.4	2.8
+Public service pensions	11.4	15.7
+Lottery grants	1.4	1.5
+BBC	3.8	3.6
+Network Rail	0.8	0
+Other	1.2	0.9
+EU	11.7	11.4
+Local govt	39.8	48
+Debt interest	46.5	57.3
+Public corp's debt interest	3.2	4
+Depreciation	29.6	36
+VAT refunds	11.9	12.4
+Military	0.2	0.3
 Environmental levies	5.9	12.7
-Local authority imputed pensions	1.8	2.3
+Local govt pensions	1.8	2.3
