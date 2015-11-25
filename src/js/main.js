@@ -72,7 +72,7 @@ var ameTreemap = treemap2(ameData, ameColors.slice(6));
 var welfareDivision = ameTreemap[0]; // TODO: more robust search for welfare division?
 var welfareTreemap = treemap(welfareData, d => parseFloat(d.cost) / gdp2015, welfareDivision.box.width, welfareDivision.box.height);
 
-welfareDivision.obj.special = 'welfare'
+welfareDivision.obj.special = 'welfare';
 
 welfareTreemap.forEach((d, i) => {
     d.obj.color = ameColors[i];
