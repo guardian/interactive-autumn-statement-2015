@@ -80,17 +80,29 @@ a {
     bottom: 0;
 }
 
+$padding: 4px;
 .section__division {
-    $padding: 4px;
     position: absolute;
     box-sizing: border-box;
     border: 1px solid white;
     border-radius: 5px;
     text-align: center;
-    overflow: hidden;
     padding: $padding;
     background-color: #f1f1f1;
     background-image: repeating-linear-gradient(-45deg, transparent, transparent 2px, white 2px, white 6px);
+
+    &.section__division--welfare {
+        background-color: transparent;
+    }
+}
+
+.section__text {
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
 
     &::before {
         content: "";
@@ -107,31 +119,27 @@ a {
 
     & > span {
         position: relative;
-        z-index: 2;
+        z-index: 6;
         color: white;
     }
 
-    &.section__division--welfare {
-        background-color: transparent;
+    .section__division--welfare & {
+        @include fs-textSans(3);
         overflow: visible;
-
+        top: 100%;
+        margin-top: 5px;
         & > span {
-            @include fs-textSans(3);
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 100%;
-            color: black;
-            margin-top: 5px;
-            br {
-                display: none;
-            }
+            color: #333;
+        }
+        br {
+            display: none;
         }
     }
 }
 
 .section__cut {
     position: absolute;
+    z-index: 5;
     background-color: #bdbdbd;
     border-radius: 5px;
 
@@ -148,7 +156,7 @@ a {
         border-radius: 11px;
         border: 3px solid #333;
         margin: -3px;
-        z-index: 5;
+        z-index: 6;
     }
 }
 

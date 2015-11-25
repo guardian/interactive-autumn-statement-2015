@@ -90,6 +90,9 @@ function app(el, sections) {
 
         $$(treemapEl, '.js-cut').forEach((cutEl, divisionNo) => {
             var {box, obj} = treemap[divisionNo];
+            obj.cost = parseFloat(obj.cost);
+            obj.new_cost = parseFloat(obj.new_cost);
+
             var cut = obj.new_cost / obj.cost;
             var [width, height] = getBox(box.width * box.height * cut, box.width / box.height);
             var lr = (box.width - width) / 2 * WIDTH / box.width;
