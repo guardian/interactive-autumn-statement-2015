@@ -1,6 +1,6 @@
-name	cost
-Housing benefit (not on JSA)	22.1
-Disability living allowance and personal independence payments	15.6
-Incapacity benefits	14.8
-Personal tax credits	29.5
-Other	38.4
+name	cost	new_cost
+Housing benefit (not on JSA)	22.1	18.22367163
+Disability living allowance and personal independence payments	15.6	7.857841849
+Incapacity benefits	14.8	13.67741474
+Personal tax credits	29.5	14.75778316
+Other	38.4	32.34328235

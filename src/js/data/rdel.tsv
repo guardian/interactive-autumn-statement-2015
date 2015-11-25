@@ -1,25 +1,25 @@
-name	cost
-Education	53.5
-NHS (Health)	111.9
-Transport	2.3
-CLG Communities	2.5
-CLG Local Government	10.6
-Business, Innovation and Skills	13.1
-Home Office	10.2
-Justice	6.3
-Law Officers’ Departments	0.5
-Defence	28.1
-Foreign and Commonwealth Office	1.8
-International Development	7.4
-Energy and Climate Change	1.4
-Environment, Food and Rural Affairs	1.6
-Culture, Media and Sport	1.1
-Work and Pensions	6.3
-Scotland	25.5
-Wales	12.9
-Northern Ireland	9.6
-Chancellor’s Departments	3.5
-Cabinet Office	2.5
-Small and Independent Bodies	1.6
-Reserve	2
-Special Reserve	0.2
+name	cost	new_cost
+Education	53.5	40.16006421
+NHS (Health)	111.9	91.703368
+Transport	2.3	1.349695905
+CLG Communities	2.5	2.447031591
+CLG Local Government	10.6	10.06793869
+Business, Innovation and Skills	13.1	10.7213435
+Home Office	10.2	6.957417158
+Justice	6.3	4.863803838
+Law Officers’ Departments	0.5	0.4094391235
+Defence	28.1	14.79049747
+Foreign and Commonwealth Office	1.8	1.721535851
+International Development	7.4	6.397077689
+Energy and Climate Change	1.4	0.9205492286
+Environment, Food and Rural Affairs	1.6	1.338970659
+Culture, Media and Sport	1.1	0.8416895237
+Work and Pensions	6.3	3.914091723
+Scotland	25.5	15.54553431
+Wales	12.9	6.589485219
+Northern Ireland	9.6	6.953330739
+Chancellor’s Departments	3.5	1.931188468
+Cabinet Office	2.5	1.861049464
+Small and Independent Bodies	1.6	0.842721534
+Reserve	2	1.355790069
+Special Reserve	0.2	0.1648452624

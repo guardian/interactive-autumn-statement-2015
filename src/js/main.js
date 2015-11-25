@@ -53,11 +53,13 @@ var tmeTreemap = treemap(tmeData, d => d.resource + d.capital, WIDTH, HEIGHT, tr
     return [
         {
             'box': box,
-            'obj': {'name': 'Resource ' + obj.name, 'cost': obj.resource, 'color': obj.colors[0]}
+            'obj': {'name': 'Resource ' + obj.name, 'cost': obj.resource, 'color': obj.colors[0],
+                'new_cost': obj.new_resource}
         },
         {
             'box': {'x': box.x + box.width - width, 'y': box.y + box.height - height, width, height},
-            'obj': {'name': 'Capital ' + obj.name, 'cost': obj.capital, 'color': obj.colors[1]}
+            'obj': {'name': 'Capital ' + obj.name, 'cost': obj.capital, 'color': obj.colors[1],
+                'new_cost': obj.new_capital}
         }
     ];
 }).reduce((a, b) => a.concat(b));
@@ -87,12 +89,11 @@ function app(el, sections) {
         var treemap = treemaps[treemapEl.getAttribute('data-map')];
 
         $$(treemapEl, '.js-cut').forEach((cutEl, divisionNo) => {
-            var division = treemap[divisionNo];
-            var box = division.box;
-            var cut = Math.random() * 0.9; // TODO: actual cut
+            var {box, obj} = treemap[divisionNo];
+            var cut = obj.new_cost / obj.cost;
             var [width, height] = getBox(box.width * box.height * cut, box.width / box.height);
-            var lr = box.width / ((box.width - width) / 2);
-            var tb = box.height / ((box.height - height) / 2);
+            var lr = (box.width - width) / 2 * WIDTH / box.width;
+            var tb = (box.height - height) / 2 * HEIGHT / box.height;
 
             cutEl.style.left = cutEl.style.right = lr + '%';
             cutEl.style.top = cutEl.style.bottom = tb + '%';
