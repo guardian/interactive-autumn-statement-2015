@@ -49,7 +49,7 @@ module.exports = function(grunt) {
 
         shell: {
             interactive: {
-                command: './node_modules/.bin/jspm bundle-sfx <%= visuals.jspmFlags %> src/js/main build/main.js --format amd',
+                command: './node_modules/.bin/jspm bundle-sfx <%= visuals.jspmFlags %> src/js/main build/main.js',
                 options: {
                     execOptions: {
                         cwd: '.'
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
             },
             assets: {
                 files: [
-                    {expand: true, cwd: 'src/', src: ['assets/**/*'], dest: 'build'},
+                    {expand: true, cwd: 'src/', src: ['main.html', 'assets/**/*'], dest: 'build'},
                 ]
             },
             deploy: {
@@ -91,8 +91,8 @@ module.exports = function(grunt) {
                     },
                     { // ASSETS
                         expand: true, cwd: 'build/',
-                        src: ['main.js', 'main.css', 'main.js.map', 'main.css.map', 'assets/**/*'],
-                        dest: 'deploy/<%= visuals.timestamp %>/<%= visuals.timestamp %>'
+                        src: ['main.js', 'main.css', 'main.js.map', 'main.css.map', 'main.html', 'assets/**/*'],
+                        dest: 'deploy/<%= visuals.timestamp %>'
                     }
                 ]
             }
@@ -159,17 +159,10 @@ module.exports = function(grunt) {
                 options: {
                 },
                 files: [
-                    { // ASSETS
-                        expand: true,
-                        cwd: 'deploy/<%= visuals.timestamp %>',
-                        src: ['<%= visuals.timestamp %>/**/*'],
-                        dest: '<%= visuals.s3.path %>',
-                        params: { CacheControl: 'max-age=2678400' }
-                    },
                     { // BOOT
                         expand: true,
                         cwd: 'deploy/<%= visuals.timestamp %>',
-                        src: ['boot.js'],
+                        src: ['**/*'],
                         dest: '<%= visuals.s3.path %>',
                         params: { CacheControl: 'max-age=60' }
                     }]

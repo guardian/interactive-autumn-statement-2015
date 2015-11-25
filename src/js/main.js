@@ -46,9 +46,10 @@ tmeData.forEach((d, i) => {
 });
 
 var tmeTreemap = treemap(tmeData, d => d.resource + d.capital, WIDTH, HEIGHT, true).map(d => {
-    var {box, obj} = d;
+    var box = d.box, obj = d.obj;
     var area = box.width * box.height * (obj.capital / (obj.resource + obj.capital));
-    var [width, height] = getBox(area, 1);
+    var tmp = getBox(area, 1);
+    var width = tmp[0], height = tmp[1];
 
     return [
         {
@@ -89,12 +90,14 @@ function app(el, sections) {
         var treemap = treemaps[treemapEl.getAttribute('data-map')];
 
         $$(treemapEl, '.js-cut').forEach((cutEl, divisionNo) => {
-            var {box, obj} = treemap[divisionNo];
+            var tmp = treemap[divisionNo];
+            var box = tmp.box, obj = tmp.obj;
             obj.cost = parseFloat(obj.cost);
             obj.new_cost = parseFloat(obj.new_cost);
 
             var cut = obj.new_cost / obj.cost;
-            var [width, height] = getBox(box.width * box.height * cut, box.width / box.height);
+            var tmp = getBox(box.width * box.height * cut, box.width / box.height);
+            var width = tmp[0], height = tmp[1];
             var lr = (box.width - width) / 2 * WIDTH / box.width;
             var tb = (box.height - height) / 2 * HEIGHT / box.height;
 
@@ -108,7 +111,7 @@ function app(el, sections) {
     });
 }
 
-export function init(el, context, config, mediator) {
+function init(el, context, config, mediator) {
     iframeMessenger.enableAutoResize();
 
     reqwest({
@@ -134,3 +137,5 @@ export function init(el, context, config, mediator) {
         }
     });
 }
+
+init(document.body.querySelector('.interactive'));

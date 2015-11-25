@@ -188,6 +188,7 @@ $padding: 4px;
 
 .section__toggle {
     @include fs-textSans(2);
+    cursor: pointer;
     font-weight: bold;
     outline: 0;
     border: 0;

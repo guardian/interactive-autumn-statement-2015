@@ -44,7 +44,8 @@ function squarify(areas, row, rect) {
     if (row.length === 0 || worstRatio(row, rect.fixed) > worstRatio(newRow, rect.fixed)) {
         return squarify(areas.slice(1), newRow, rect);
     } else {
-        var [rowBoxes, newRect] = rect.layoutRow(row);
+        var tmp = rect.layoutRow(row);
+        var rowBoxes = tmp[0], newRect = tmp[1];
         return rowBoxes.concat(squarify(areas, [], newRect));
     }
 }
