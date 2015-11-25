@@ -85,6 +85,13 @@ var treemaps = {
     'cdel': treemap2(cdelData, cdelColors)
 };
 
+var totals = {
+    'tme': [733.8, 799.1],
+    'rdel': [315.1, 328.3],
+    'ame': [345.3, 391.8],
+    'cdel': [41.7, 47.3]
+}
+
 function app(el, sections) {
     el.innerHTML = templateFn({RATIO, sections, treemaps});
 
@@ -131,13 +138,9 @@ function init(el, context, config, mediator) {
                 }
                 if (section.map) {
                     section.treemap = treemaps[section.map];
-                    section.total = section.treemap.reduce((total, d) => total + parseFloat(d.obj.cost), 0);
-                    section.new_total = section.treemap.reduce((total, d) => total + parseFloat(d.obj.new_cost), 0);
-                    if (section.map === 'ame') {
-                        section.total -= parseFloat(welfareDivision.obj.cost);
-                        section.new_total -= parseFloat(welfareDivision.obj.new_cost);
-                    }
 
+                    section.total = totals[section.map][0];
+                    section.new_total = totals[section.map][1];
                     section.total_gdp =  section.total / gdp2015 * 100;
                     section.new_total_gdp = section.new_total / gdp2019 * 100;
                 }
